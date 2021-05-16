@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Important!
+    While working on this layout surround it in a cardView and after you're done just remove it from the CardView-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/img_blue_pattern"
+        tools:ignore="SmallSp">
+
+        <View
+            android:id="@+id/gradient_layer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.74"
+            android:background="@drawable/gradient_blue" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_line_vertical_64"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.62" />
+
+        <ImageView
+            android:id="@+id/app_logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/bg_circular_white"
+            android:padding="8dp"
+            android:src="@drawable/icon_app"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txt_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:elevation="6dp"
+            android:fontFamily="@font/poppins_bold"
+            android:shadowColor="#F08080"
+            android:shadowRadius="18"
+            android:text="@string/vipsa"
+            android:textAllCaps="true"
+            android:textColor="@color/colorCrimson"
+            android:textSize="4sp"
+            app:layout_constraintBottom_toBottomOf="@id/app_logo"
+            app:layout_constraintEnd_toEndOf="@id/app_logo"
+            app:layout_constraintStart_toStartOf="@id/app_logo" />
+
+
+        <TextView
+            android:id="@+id/txt_college_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="@string/college_full_name"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="11sp"
+            app:layout_constraintTop_toBottomOf="@id/app_logo" />
+
+
+        <View
+            android:id="@+id/bg_white"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="0.54"
+            app:layout_constraintTop_toBottomOf="@id/txt_college_name" />
+
+        <com.github.florent37.shapeofview.shapes.CircleView
+            android:id="@+id/container_img_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toTopOf="@id/bg_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bg_white"
+            app:shape_circle_borderWidth="2dp">
+
+            <ImageView
+                android:id="@+id/img_student"
+                android:layout_width="92dp"
+                android:layout_height="92dp"
+                android:background="@color/colorBlueGrotto"
+                android:scaleType="centerCrop"
+                android:src="@drawable/temp_image"
+                tools:ignore="ContentDescription" />
+        </com.github.florent37.shapeofview.shapes.CircleView>
+
+        <TextView
+            android:id="@+id/name_student"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="@string/temp_name"
+            android:textColor="@color/colorBlueGrotto"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/container_img_student" />
+
+        <TextView
+            android:id="@+id/txt_department_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/department"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_student" />
+
+        <TextView
+            android:id="@+id/department_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/vsit"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/txt_department_student"
+            app:layout_constraintTop_toBottomOf="@id/txt_department_student" />
+
+        <TextView
+            android:id="@+id/txt_course_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/course"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@id/guide_line_vertical_64"
+            app:layout_constraintTop_toTopOf="@id/txt_department_student" />
+
+        <TextView
+            android:id="@+id/course_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/bca"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/txt_course_student"
+            app:layout_constraintTop_toTopOf="@id/department_student" />
+
+        <TextView
+            android:id="@+id/txt_semester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/semester"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@id/txt_department_student"
+            app:layout_constraintTop_toBottomOf="@id/department_student" />
+
+        <TextView
+            android:id="@+id/semester"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/na"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/txt_department_student"
+            app:layout_constraintTop_toBottomOf="@id/txt_semester" />
+
+        <TextView
+            android:id="@+id/txt_hod_signature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/hod_signature"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@id/guide_line_vertical_64"
+            app:layout_constraintTop_toTopOf="@id/txt_semester" />
+
+        <ImageView
+            android:id="@+id/hod_signature"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_signature"
+            app:layout_constraintStart_toEndOf="@id/guide_line_vertical_64"
+            app:layout_constraintTop_toTopOf="@id/semester"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txt_batch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="@string/current_batch"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bg_white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

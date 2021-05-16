@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/container_profile_img"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="6dp"
+            app:layout_constraintDimensionRatio="H,1:1.1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.15">
+
+            <ImageView
+                android:id="@+id/profile_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img_boy"
+                tools:ignore="ContentDescription" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/student_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/temp_name"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/student_course"
+            app:layout_constraintStart_toEndOf="@id/container_profile_img"
+            app:layout_constraintTop_toTopOf="@id/container_profile_img"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/department_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/vsit"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            app:drawableEndCompat="@drawable/circle_separation"
+            app:drawableTint="@color/colorLightBlue"
+            app:layout_constraintBottom_toBottomOf="@id/container_profile_img"
+            app:layout_constraintStart_toStartOf="@id/student_name"
+            app:layout_constraintTop_toBottomOf="@id/student_name" />
+
+        <TextView
+            android:id="@+id/student_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/bca"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/department_student"
+            app:layout_constraintTop_toTopOf="@id/department_student" />
+
+        <TextView
+            android:id="@+id/txt_features"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/features"
+            android:textColor="@color/colorLightBlue"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/container_profile_img"
+            app:layout_constraintTop_toBottomOf="@id/container_profile_img" />
+
+        <View
+            android:id="@+id/division_line_features"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@color/colorGray25"
+            app:layout_constraintBottom_toBottomOf="@id/txt_features"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txt_features"
+            app:layout_constraintTop_toTopOf="@id/txt_features" />
+
+        <TextView
+            android:id="@+id/feature_virtual_id_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:drawablePadding="4dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center_vertical"
+            android:text="@string/virtual_id_card"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            app:drawableEndCompat="@drawable/icon_arrow_right"
+            app:drawableStartCompat="@drawable/icon_id_card"
+            app:layout_constraintEnd_toEndOf="@id/division_line_features"
+            app:layout_constraintStart_toStartOf="@id/txt_features"
+            app:layout_constraintTop_toBottomOf="@id/txt_features" />
+
+        <TextView
+            android:id="@+id/txt_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/settings"
+            android:textColor="@color/colorLightBlue"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/container_profile_img"
+            app:layout_constraintTop_toBottomOf="@id/feature_virtual_id_card" />
+
+        <View
+            android:id="@+id/division_line_settings"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/colorGray25"
+            app:layout_constraintBottom_toBottomOf="@id/txt_settings"
+            app:layout_constraintEnd_toEndOf="@id/division_line_features"
+            app:layout_constraintStart_toStartOf="@id/division_line_features"
+            app:layout_constraintTop_toTopOf="@id/txt_settings" />
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:drawablePadding="6dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center_vertical"
+            android:text="@string/logout"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="12sp"
+            app:drawableEndCompat="@drawable/icon_arrow_right"
+            app:drawableStartCompat="@drawable/icon_logout"
+            app:layout_constraintEnd_toEndOf="@id/division_line_settings"
+            app:layout_constraintStart_toStartOf="@id/txt_settings"
+            app:layout_constraintTop_toBottomOf="@id/txt_settings" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

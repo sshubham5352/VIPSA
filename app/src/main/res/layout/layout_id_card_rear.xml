@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Important!
+    While working on this layout surround it in a cardView and after you're done just remove it from the CardView-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/img_blue_pattern"
+        tools:ignore="SmallSp">
+
+        <View
+            android:id="@+id/gradient_layer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.74"
+            android:background="@drawable/gradient_blue" />
+
+        <ImageView
+            android:id="@+id/vips_logo"
+            android:layout_width="40dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:adjustViewBounds="true"
+            android:background="@color/colorWhite"
+            android:padding="2dp"
+            android:src="@drawable/ic_vips_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+
+        <TextView
+            android:id="@+id/txt_college_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="@string/college_full_name"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="11sp"
+            app:layout_constraintTop_toBottomOf="@id/vips_logo" />
+
+        <View
+            android:id="@+id/bg_white"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintBottom_toTopOf="@id/college_address"
+            app:layout_constraintHeight_percent="0.54"
+            app:layout_constraintTop_toBottomOf="@id/txt_college_name" />
+
+        <TextView
+            android:id="@+id/colon_enrollment_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/colon"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bg_white" />
+
+        <TextView
+            android:id="@+id/colon_father_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/colon"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@id/colon_enrollment_no"
+            app:layout_constraintTop_toBottomOf="@id/colon_enrollment_no" />
+
+        <TextView
+            android:id="@+id/colon_dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/colon"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@id/colon_father_name"
+            app:layout_constraintTop_toBottomOf="@id/colon_father_name" />
+
+        <TextView
+            android:id="@+id/colon_phone_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/colon"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@id/colon_dob"
+            app:layout_constraintTop_toBottomOf="@id/colon_dob" />
+
+        <TextView
+            android:id="@+id/txt_enrollment_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/enrollment_no"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/colon_enrollment_no"
+            app:layout_constraintEnd_toStartOf="@id/colon_enrollment_no"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/colon_enrollment_no" />
+
+        <TextView
+            android:id="@+id/txt_father_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/father_s_name"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/colon_father_name"
+            app:layout_constraintEnd_toEndOf="@id/txt_enrollment_no"
+            app:layout_constraintTop_toTopOf="@id/colon_father_name" />
+
+        <TextView
+            android:id="@+id/txt_dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/date_of_birth"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/colon_dob"
+            app:layout_constraintEnd_toEndOf="@id/txt_enrollment_no"
+            app:layout_constraintTop_toTopOf="@id/colon_dob" />
+
+        <TextView
+            android:id="@+id/txt_phone_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/phone"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/colon_phone_no"
+            app:layout_constraintEnd_toEndOf="@id/txt_enrollment_no"
+            app:layout_constraintTop_toTopOf="@id/colon_phone_no" />
+
+        <TextView
+            android:id="@+id/enrollment_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/na"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/colon_enrollment_no"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/colon_enrollment_no"
+            app:layout_constraintTop_toTopOf="@id/colon_enrollment_no" />
+
+        <TextView
+            android:id="@+id/father_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/na"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/colon_father_name"
+            app:layout_constraintStart_toStartOf="@+id/enrollment_no"
+            app:layout_constraintTop_toTopOf="@id/colon_father_name" />
+
+        <TextView
+            android:id="@+id/dob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/na"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/colon_dob"
+            app:layout_constraintStart_toStartOf="@+id/enrollment_no"
+            app:layout_constraintTop_toTopOf="@id/colon_dob" />
+
+        <TextView
+            android:id="@+id/phone_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/na"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/colon_phone_no"
+            app:layout_constraintStart_toStartOf="@+id/enrollment_no"
+            app:layout_constraintTop_toTopOf="@id/colon_phone_no" />
+
+        <TextView
+            android:id="@+id/txt_residence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/residence"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toTopOf="@id/txt_college_contact"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_phone_no"
+            app:layout_constraintVertical_bias="0.35" />
+
+        <TextView
+            android:id="@+id/residence_student"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_regular"
+            android:maxLines="2"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="@string/na"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/txt_residence" />
+
+
+        <TextView
+            android:id="@+id/college_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/college_contact_no"
+            android:textColor="@color/colorPrimaryText"
+            android:textIsSelectable="true"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@id/bg_white"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_college_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/contact"
+            android:textColor="@color/colorSecondaryText"
+            android:textSize="9sp"
+            app:layout_constraintBottom_toBottomOf="@id/college_contact"
+            app:layout_constraintEnd_toStartOf="@id/college_contact" />
+
+
+        <TextView
+            android:id="@+id/college_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="@string/vips_address"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

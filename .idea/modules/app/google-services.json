@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "742457782438",
+    "project_id": "vips-affinity",
+    "storage_bucket": "vips-affinity.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742457782438:android:a7a30e06d42fd18b344467",
+        "android_client_info": {
+          "package_name": "com.app.vipsaffinity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742457782438-7ootj7s5b7po3kuplqtfm02hui3fsiap.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.vipsaffinity",
+            "certificate_hash": "f09ea8f6996d034dfe3c5a9ebcf8a3543f077f55"
+          }
+        },
+        {
+          "client_id": "742457782438-pjesfjddcl17bgbvpok4ac9gonb1f409.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAI__UMPzWA8Hcfnp8IalE9lQwuKhvLypU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742457782438-pjesfjddcl17bgbvpok4ac9gonb1f409.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

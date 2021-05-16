@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/root_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="16dp"
+            tools:context=".activities.FacultyDetailsActivity">
+
+            <com.github.florent37.shapeofview.shapes.ArcView
+                android:id="@+id/arc_view"
+                android:layout_width="match_parent"
+                android:layout_height="288dp"
+                android:elevation="6dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shape_arc_cropDirection="outside"
+                app:shape_arc_height="40dp"
+                app:shape_arc_position="bottom">
+
+                <ImageView
+                    android:id="@+id/bg_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/c_lang_bg"
+                    tools:ignore="ContentDescription" />
+
+                <View
+                    android:id="@+id/gradient_layer_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <View
+                    android:id="@+id/gradient_layer_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.github.florent37.shapeofview.shapes.ArcView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="6dp"
+                app:layout_constraintBottom_toBottomOf="@id/arc_view"
+                app:layout_constraintEnd_toEndOf="@id/arc_view"
+                app:layout_constraintStart_toStartOf="@id/arc_view"
+                app:layout_constraintTop_toBottomOf="@id/arc_view">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_yellow"
+                    android:drawablePadding="6dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:paddingStart="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/back_to_home"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp"
+                    app:drawableStartCompat="@drawable/icon_back"
+                    tools:ignore="SmallSp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="6dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@id/arc_view"
+                app:layout_constraintEnd_toEndOf="@id/arc_view"
+                app:layout_constraintStart_toStartOf="@id/arc_view"
+                app:layout_constraintTop_toTopOf="@id/arc_view">
+
+                <com.github.florent37.shapeofview.shapes.CircleView
+                    android:id="@+id/container_img_faculty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="6dp"
+                    app:layout_constraintTop_toTopOf="@id/arc_view"
+                    app:shape_circle_borderWidth="2dp">
+
+                    <ImageView
+                        android:id="@+id/img_faculty"
+                        android:layout_width="132dp"
+                        android:layout_height="132dp"
+                        android:background="@color/colorWhite"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/icon_my_faculty"
+                        tools:ignore="ContentDescription" />
+                </com.github.florent37.shapeofview.shapes.CircleView>
+
+                <TextView
+                    android:id="@+id/name_faculty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="@string/loading"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/department_short_faculty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/loading"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp"
+                    android:translationY="-2dp" />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/arc_view"
+                app:layout_constraintEnd_toEndOf="@id/arc_view"
+                app:layout_constraintStart_toStartOf="@id/arc_view"
+                app:layout_constraintTop_toTopOf="@id/arc_view" />
+
+            <ImageView
+                android:id="@+id/icon_department"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_department"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_home"
+                tools:ignore="ContentDescription" />
+
+
+            <TextView
+                android:id="@+id/txt_department_faculty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/department"
+                android:textColor="@color/colorGray"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/department_faculty"
+                app:layout_constraintTop_toTopOf="@id/icon_department" />
+
+            <TextView
+                android:id="@+id/department_faculty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/loading"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon_department"
+                app:layout_constraintTop_toBottomOf="@id/txt_department_faculty" />
+
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/department_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="icon_department,department_faculty" />
+
+            <View
+                android:id="@+id/division_line_1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="@color/colorThinGray"
+                app:layout_constraintTop_toBottomOf="@id/department_barrier" />
+
+            <ImageView
+                android:id="@+id/icon_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_bio"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/division_line_1"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/txt_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/bio"
+                android:textColor="@color/colorGray"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@id/icon_bio"
+                app:layout_constraintStart_toStartOf="@id/bio_faculty"
+                app:layout_constraintTop_toTopOf="@id/icon_bio" />
+
+            <TextView
+                android:id="@+id/bio_faculty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/loading"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon_bio"
+                app:layout_constraintTop_toBottomOf="@id/txt_bio" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/bio_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="icon_bio,bio_faculty" />
+
+            <View
+                android:id="@+id/division_line_2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="@color/colorThinGray"
+                app:layout_constraintTop_toBottomOf="@id/bio_barrier" />
+
+
+            <ImageView
+                android:id="@+id/icon_proficiency"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_proficiency"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/division_line_2"
+                tools:ignore="ContentDescription" />
+
+
+            <TextView
+                android:id="@+id/txt_proficiency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/proficiency"
+                android:textColor="@color/colorGray"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/proficiency_faculty"
+                app:layout_constraintTop_toTopOf="@id/icon_proficiency" />
+
+            <TextView
+                android:id="@+id/proficiency_faculty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/loading"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon_proficiency"
+                app:layout_constraintTop_toBottomOf="@id/txt_proficiency" />
+
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/proficiency_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="icon_proficiency,proficiency_faculty" />
+
+            <View
+                android:id="@+id/division_line_3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="@color/colorThinGray"
+                app:layout_constraintTop_toBottomOf="@id/proficiency_barrier" />
+
+
+            <ImageView
+                android:id="@+id/icon_experience"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_experience"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/division_line_3"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/txt_experience"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/experience"
+                android:textColor="@color/colorGray"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/experience_faculty"
+                app:layout_constraintTop_toTopOf="@id/icon_experience" />
+
+            <TextView
+                android:id="@+id/experience_faculty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/loading"
+                android:textColor="@color/colorBlack"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon_experience"
+                app:layout_constraintTop_toBottomOf="@id/txt_experience" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/experience_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="icon_experience,experience_faculty" />
+
+            <View
+                android:id="@+id/division_line_4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="@color/colorThinGray"
+                app:layout_constraintTop_toBottomOf="@id/experience_barrier" />
+
+            <ImageView
+                android:id="@+id/icon_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/icon_phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/division_line_4"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/txt_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/phone"
+                android:textColor="@color/colorGray"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/phone_faculty"
+                app:layout_constraintTop_toTopOf="@id/icon_phone" />
+
+            <TextView
+                android:id="@+id/phone_faculty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/loading"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon_phone"
+                app:layout_constraintTop_toBottomOf="@id/txt_phone" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/phone_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="icon_phone,phone_faculty" />
+
+            <View
+                android:id="@+id/division_line_5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="@color/colorThinGray"
+                app:layout_constraintTop_toBottomOf="@id/phone_barrier" />
+
+            <ImageView
+                android:id="@+id/icon_gmail"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_gmail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/division_line_5"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/txt_gmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/gmail"
+                android:textColor="@color/colorGray"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/gmail_faculty"
+                app:layout_constraintTop_toTopOf="@id/icon_gmail" />
+
+            <TextView
+                android:id="@+id/gmail_faculty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/loading"
+                android:textColor="@color/colorBlack"
+                android:textIsSelectable="true"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon_gmail"
+                app:layout_constraintTop_toBottomOf="@id/txt_gmail" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>
