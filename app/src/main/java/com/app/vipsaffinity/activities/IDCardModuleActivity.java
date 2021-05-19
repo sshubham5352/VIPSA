@@ -186,23 +186,7 @@ public class IDCardModuleActivity extends AppCompatActivity {
     }
 
     private void setData() {
-//        binding.frontFace.nameStudent.setText(SessionManager.getFullName(this));
-//        if (SessionManager.getGender(this).matches(getString(R.string.male)))
-//            binding.frontFace.imgStudent.setImageResource(R.drawable.img_boy);
-//        else
-//            binding.frontFace.imgStudent.setImageResource(R.drawable.img_girl);
-        //front
-//        binding.frontFace.imgStudent.setImageResource(R.drawable.delete_it_later);
-//        binding.frontFace.nameStudent.setText("Somya Singh");
-//        binding.frontFace.departmentStudent.setText("VSJMC");
-//        binding.frontFace.courseStudent.setText("BJMC");
-//        binding.frontFace.semester.setText("2");
-//        //rear
-//        binding.rearFace.enrollmentNo.setText("16017702020");
-//        binding.rearFace.fatherName.setText("N/A");
-//        binding.rearFace.dob.setText("Nahi pata");
-//        binding.rearFace.phoneNo.setText("Nahi mila");
-//        binding.rearFace.residenceStudent.setText("Dwarka Mor, New Delhi - 110059");
+
     }
 
 
