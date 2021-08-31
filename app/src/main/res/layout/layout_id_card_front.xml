@@ -100,7 +100,7 @@
                 android:layout_height="92dp"
                 android:background="@color/colorBlueGrotto"
                 android:scaleType="centerCrop"
-                android:src="@drawable/temp_image"
+                android:src="@drawable/img_boy"
                 tools:ignore="ContentDescription" />
         </com.github.florent37.shapeofview.shapes.CircleView>
 
@@ -111,7 +111,7 @@
             android:layout_marginTop="4dp"
             android:fontFamily="@font/poppins_bold"
             android:gravity="center"
-            android:text="@string/temp_name"
+            android:text="@string/na"
             android:textColor="@color/colorBlueGrotto"
             android:textSize="12sp"
             app:layout_constraintTop_toBottomOf="@id/container_img_student" />
@@ -134,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/vsit"
+            android:text="@string/na"
             android:textColor="@color/colorPrimaryText"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@id/txt_department_student"
@@ -156,7 +156,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/bca"
+            android:text="@string/na"
             android:textColor="@color/colorPrimaryText"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@id/txt_course_student"
@@ -202,7 +202,6 @@
             android:layout_height="36dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/img_signature"
             app:layout_constraintStart_toEndOf="@id/guide_line_vertical_64"
             app:layout_constraintTop_toTopOf="@id/semester"
             tools:ignore="ContentDescription" />

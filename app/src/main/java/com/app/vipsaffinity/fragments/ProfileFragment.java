@@ -1,9 +1,12 @@
 package com.app.vipsaffinity.fragments;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +25,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     //field declaration
     Activity mActivity;
     Context mContext;
+    ProgressDialog progressDialog;
     FragmentProfileBinding binding;
 
     @Nullable
@@ -36,6 +40,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         mContext = getContext();
         mActivity = getActivity();
+        //progress dialog
+        progressDialog = new ProgressDialog(mContext);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Logging out...`");
         //setting onClickListeners
         binding.featureVirtualIdCard.setOnClickListener(this);
         binding.logout.setOnClickListener(this);
@@ -43,13 +52,22 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.feature_virtual_id_card:
-                startActivity(new Intent(mActivity, IDCardModuleActivity.class));
-                break;
-            case R.id.logout:
-                //SessionManager.logoutUser(mContext);
-                break;
+        int id = v.getId();
+
+        if (id == R.id.feature_virtual_id_card)
+            startActivity(new Intent(mActivity, IDCardModuleActivity.class));
+        else if (id == R.id.logout) {
+            progressDialog.show();
+            new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    SessionManager.logoutUser(mActivity);
+                    progressDialog.dismiss();
+                }
+            }, 1000);
         }
     }
 }
+
+
+

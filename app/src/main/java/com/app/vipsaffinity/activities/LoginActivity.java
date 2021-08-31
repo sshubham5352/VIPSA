@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                 new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                         .requestEmail().build());
         //getting collection reference
-        undergraduatesRef = Helper.getFirestoreDB().collection("undergraduates");
+        undergraduatesRef = Helper.getFirestoreDB().collection(Constants.COLLECTION_UNDERGRADUATES);
     }
 
     private void setCalender() {
@@ -171,6 +171,7 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        Log.d(Constants.LOGIN, "error : " + e.toString());
                         Toast.makeText(LoginActivity.this, "Something went wrong.\n Error : " + e.toString(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }
@@ -201,6 +202,7 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        Log.d(Constants.LOGIN, "error : " + e.toString());
                         Toast.makeText(LoginActivity.this, "Something went wrong.\n Error : " + e.toString(), Toast.LENGTH_SHORT).show();
                         progressDialog.dismiss();
                     }

@@ -1,21 +1,20 @@
 package com.app.vipsaffinity.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.animation.AlphaAnimation;
-import android.widget.EdgeEffect;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.core.widget.EdgeEffectCompat;
-import androidx.core.widget.NestedScrollView;
-
 import com.app.vipsaffinity.R;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.lang.reflect.Field;
 import java.util.Calendar;
 
 public class Helper {
@@ -24,6 +23,7 @@ public class Helper {
     public static final FirebaseFirestore firestoreDB = FirebaseFirestore.getInstance();
     public static final AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f, 1.0f);
     public static final Calendar calendar = Calendar.getInstance();
+    public static GoogleSignInClient mGoogleSignInClient;
 
     static {
         alphaAnimation.setDuration(1000);
@@ -73,5 +73,13 @@ public class Helper {
         calendar.clear();
         calendar.set(y, m - 1, d); // date format : Year, Month - 1, Day
         return calendar.getTimeInMillis();
+    }
+
+    public static GoogleSignInClient getGoogleSignInClient(Activity activity) {
+        if (mGoogleSignInClient == null)
+            mGoogleSignInClient = GoogleSignIn.getClient(activity,
+                    new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                            .requestEmail().build());
+        return mGoogleSignInClient;
     }
 }

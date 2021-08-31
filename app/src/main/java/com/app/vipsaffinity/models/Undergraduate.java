@@ -2,9 +2,10 @@ package com.app.vipsaffinity.models;
 
 public class Undergraduate {
     // class variables
-    private long enrollmentNo;
+    private long enrollmentNo, phoneNo;
     private int rankCET, rollNo;
-    private String firstName, lastName, dob, gender, gmailID;
+    private boolean isVerified;
+    private String firstName, lastName, fatherName, dob, gender, gmailID, profilePic;
     Residence residence;
 
     public Undergraduate() {
@@ -13,6 +14,10 @@ public class Undergraduate {
 
     public long getEnrollmentNo() {
         return enrollmentNo;
+    }
+
+    public long getPhoneNo() {
+        return phoneNo;
     }
 
     public int getRankCET() {
@@ -35,6 +40,10 @@ public class Undergraduate {
         return lastName;
     }
 
+    public String getFatherName() {
+        return fatherName;
+    }
+
     public String getDob() {
         return dob;
     }
@@ -45,6 +54,14 @@ public class Undergraduate {
 
     public Residence getResidence() {
         return residence;
+    }
+
+    public boolean isVerified() {
+        return isVerified;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
     }
 
     public static class Residence {
@@ -78,6 +95,14 @@ public class Undergraduate {
 
         public String getState() {
             return state;
+        }
+
+        public String getAddress() {
+            try {
+                return houseNo + ", " + area + city + ", " + district + ", " + pinCode;
+            }catch (Exception e){
+                return "N/A";
+            }
         }
     }
 }

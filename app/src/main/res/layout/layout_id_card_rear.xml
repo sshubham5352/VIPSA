@@ -160,6 +160,7 @@
             android:id="@+id/enrollment_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/na"
             android:textColor="@color/colorPrimaryText"

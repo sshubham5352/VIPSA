@@ -9,6 +9,8 @@ public class Constants {
     public static final String PROFESSOR_DATA = "2";
     public static final String EVENT_DATA = "3";
 
+    //FireStore collections
+    public static final String COLLECTION_UNDERGRADUATES = "undergraduates";
     //FireStore Fields
     public static final String ENROLLMENT_NO = "enrollmentNo";
     public static final String RANK_CET = "rankCET";
@@ -35,4 +37,7 @@ public class Constants {
     public static final String KEY_DISTRICT = "112";
     public static final String KEY_STATE = "113";
     public static final String KEY_PIN_CODE = "114";
+
+    //LOG CONSTANTS
+    public static final String LOGIN = "login";
 }

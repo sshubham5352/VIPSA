@@ -15,12 +15,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.app.vipsaffinity.utils.Constants;
-import com.app.vipsaffinity.utils.Helper;
 import com.app.vipsaffinity.R;
 import com.app.vipsaffinity.databinding.ActivityEventsBinding;
 import com.app.vipsaffinity.interfaces.EventListener;
 import com.app.vipsaffinity.models.Event;
+import com.app.vipsaffinity.utils.Constants;
+import com.app.vipsaffinity.utils.Helper;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

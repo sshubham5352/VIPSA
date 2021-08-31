@@ -1,5 +1,6 @@
 package com.app.vipsaffinity.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -114,16 +115,18 @@ public class SessionManager {
 
 
     // Clear session details
-    public static void logoutUser(Context context) {
+    public static void logoutUser(Activity activity) {
         // Clearing all data from Shared Preferences
         if (sharedPreferences == null)
-            getSharedPreferences(context);
+            getSharedPreferences(activity);
         try {
             editor.clear();
             editor.commit();
-            redirectToSignInActivity(context);
+            Helper.getGoogleSignInClient(activity).signOut();
+            activity.finishAffinity();
+            redirectToSignInActivity(activity);
         } catch (Exception e) {
-            Toast.makeText(context, "something went wrong.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "something went wrong.", Toast.LENGTH_SHORT).show();
             Log.d("errors", "error : " + e.toString());
         }
     }

@@ -4,18 +4,32 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.app.vipsaffinity.R;
 import com.app.vipsaffinity.databinding.ActivityIDCardModuleBinding;
+import com.app.vipsaffinity.models.Undergraduate;
+import com.app.vipsaffinity.utils.Constants;
+import com.app.vipsaffinity.utils.Helper;
 import com.app.vipsaffinity.utils.OnSwipeTouchListener;
+import com.app.vipsaffinity.utils.SessionManager;
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class IDCardModuleActivity extends AppCompatActivity {
     //final Variables
@@ -28,12 +42,23 @@ public class IDCardModuleActivity extends AppCompatActivity {
     AnimatorSet animatorSet;
     float previousX, actionDownX;
     ActivityIDCardModuleBinding binding;
+    ProgressDialog progressDialog;
+    CollectionReference undergraduatesRef;
+    Undergraduate undergradData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_i_d_card_module);
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorBlueGrotto));
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+
+        //getting collection reference
+        undergraduatesRef = Helper.getFirestoreDB().collection(Constants.COLLECTION_UNDERGRADUATES);
 
         //calculating the angle by which layout would move for move in every 1 pixel
         angleInOnePixel = Math.round((90 / (float) getResources().getDisplayMetrics().widthPixels + 0.007f) * 1000) / 1000f;
@@ -119,9 +144,12 @@ public class IDCardModuleActivity extends AppCompatActivity {
                 animatorSet.removeAllListeners();
             }
         });
-        setData();
-    }
 
+        if (SessionManager.getGender(this).matches("F"))
+            binding.frontFace.imgStudent.setImageDrawable(getResources().getDrawable(R.drawable.img_girl));
+
+        fetchData();
+    }
 
     private void animateView(float rotationAngle, long duration) {
         if ((rotationAngle > 88 && rotationAngle < 91) || (rotationAngle > 268 && rotationAngle < 271) ||
@@ -185,8 +213,46 @@ public class IDCardModuleActivity extends AppCompatActivity {
         return angle;
     }
 
-    private void setData() {
+    private void fetchData() {
+        progressDialog.setTitle("Generating Your ID-Card...");
+        progressDialog.show();
 
+        undergraduatesRef.whereEqualTo(Constants.ENROLLMENT_NO, SessionManager.getEnrollmentNo(this))
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                        undergradData = queryDocumentSnapshots.getDocuments().get(0).toObject(Undergraduate.class);
+                        Log.d("bella ciao", "-> " + undergradData.getDob());
+                        setData();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(Constants.LOGIN, "error : " + e.toString());
+                        Toast.makeText(IDCardModuleActivity.this, "Something went wrong.\n Error : " + e.toString(), Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                    }
+                });
+    }
+
+    void setData() {
+        binding.frontFace.departmentStudent.setText(getResources().getString(R.string.vsit));
+        binding.frontFace.courseStudent.setText(getResources().getString(R.string.bca));
+        binding.frontFace.semester.setText("2");
+        binding.frontFace.hodSignature.setImageDrawable(getResources().getDrawable(R.drawable.img_hod_signature));
+        //setting undergrad data
+        if (undergradData.getProfilePic() != null && undergradData.getProfilePic().length() != 0)
+            Glide.with(this).load(undergradData.getProfilePic()).into(binding.frontFace.imgStudent);
+        binding.frontFace.nameStudent.setText(SessionManager.getFullName(this));
+        binding.rearFace.enrollmentNo.setText(undergradData.getEnrollmentNo() + "");
+        Helper.setText(undergradData.getFatherName(), binding.rearFace.fatherName, true);
+        Helper.setText(undergradData.getDob(), binding.rearFace.dob, true);
+        Helper.setText(undergradData.getPhoneNo() + "", binding.rearFace.phoneNo, true);
+        binding.rearFace.residenceStudent.setText(undergradData.getResidence().getAddress());
+        progressDialog.dismiss();
     }
 
 
